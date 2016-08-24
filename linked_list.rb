@@ -43,14 +43,15 @@ class Node
   end
 
   def self.object_with_value(head_node, value)
-    return head_node if node.value == value
-    return "None matching." if head_node.next.nil?
+    return head_node if head_node.value == value
+    return nil if head_node.next.nil?
     object_with_value(head_node.next, value)
   end
 
-  def self.reverse(node)
-    return node if node.next.nil?
-    head, swap, node.next, link = node.next, node, nil, link = head.next
+  def self.reverse(head_node)
+    return head_node if head_node.next.nil?
+    head, swap, head_node.next = head_node.next, head_node, nil
+    link = head.next
     while link != nil
       head.next = swap
       swap = head
