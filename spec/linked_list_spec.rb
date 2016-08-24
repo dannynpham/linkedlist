@@ -1,18 +1,30 @@
 require_relative '../linked_list'
 
-n0 = Node.new('A')
-n1 = Node.new('B')
-n2 = Node.new('C')
-n3 = Node.new('D')
-n4 = Node.new('E')
-n5 = Node.new('F')
-n0.next = n1
-n1.next = n2
-n2.next = n3
-n3.next = n4
-n4.next = n5
-
 describe Node do
-  let(:A,:B,:C,:D,:E,:F){n0,n1,n2,n3,n4,n5}
-  
+  let(:node_a) { Node.new('A') }
+  let(:node_b) { Node.new('B') }
+  let(:node_c) { Node.new('C') }
+  let(:node_d) { Node.new('D') }
+  let(:node_e) { Node.new('E') }
+
+  it 'returns an array to visualize list' do
+    node_a.next = node_b
+    expect(Node.list(node_a)).to eq ['A','B']
+  end
+
+  it 'appends node to the end of list' do
+    Node.push(node_a, node_e)
+    expect(node_a.next).to eq node_e
+  end
+
+  it 'removes the last node from the list' do
+    node_a.next, node_b.next, node_c.next = node_b, node_c, node_d
+    Node.pop(node_a)
+    expect(Node.tail(node_a)).to eq node_c
+  end
+
+  it 'adds new node to the beginning' do
+    node_a.next, node_b.next = node_b, node_c
+    expect(Node.insert_first(node_a, node_d).value).to eq 'D'
+  end
 end

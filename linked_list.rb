@@ -1,13 +1,13 @@
 class Node
-  attr_accessor :node, :next
+  attr_accessor :value, :next
 
   def initialize(value)
-    @node = value
+    @value = value
   end
 
   def self.list(head_node, msg = [])
     until head_node.nil?
-      msg << head_node.node
+      msg << head_node.value
       head_node = head_node.next
     end
     msg
@@ -23,7 +23,7 @@ class Node
   end
 
   def self.insert_first(head_node, first_node)
-    first_node.next = head_node
+    head_node.next = first_node
   end
 
   def self.remove_first(head_node)
@@ -61,12 +61,12 @@ class Node
     head
   end
 
-  private
-
   def self.tail(head_node)
-    return node if head_node.next.nil?
+    return head_node if head_node.next.nil?
     head_node = tail(head_node.next)
   end
+
+  private
 
   def self.node_at_index(head_node, index, count = 0)
     return 'Invalid index.' if head_node.next.nil?
