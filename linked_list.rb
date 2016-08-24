@@ -61,13 +61,13 @@ class Node
     head.next = swap
     head
   end
+  
+  private
 
   def self.tail(head_node)
     return head_node if head_node.next.nil?
     head_node = tail(head_node.next)
   end
-
-  private
 
   def self.node_at_index(head_node, index, count = 0)
     return 'Invalid index.' if head_node.next.nil?

@@ -25,7 +25,7 @@ describe Node do
     it 'removes the last node from the list' do
       node_a.next, node_b.next, node_c.next = node_b, node_c, node_d
       Node.pop(node_a)
-      expect(Node.tail(node_a)).to eq node_c
+      expect(node_a.next.next).to eq node_c
     end
   end
 
@@ -71,5 +71,5 @@ describe Node do
       expect(Node.list(node_d)).to eq ['D','C','B','A']
     end
   end
-  
+
 end
