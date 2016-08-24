@@ -13,5 +13,6 @@ n3.next = n4
 n4.next = n5
 
 describe Node do
-
+  let(:A,:B,:C,:D,:E,:F){n0,n1,n2,n3,n4,n5}
+  
 end
